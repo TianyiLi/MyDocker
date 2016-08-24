@@ -1,0 +1,40 @@
+version: '2'
+services:
+  php7:
+    image: kencool107/php7-apache
+    # links:
+    #   - db
+    ports:
+      - 9090:80
+      - 9999:443
+    volumes:
+      - ~/workspace:/var/www/html
+    networks:
+      - ken
+#   db:
+#     image: mysql:5.7 # or mariadb
+#     ports:
+#       - 3300:3306
+#     volumes:
+#       - data:/var/lib/mysql
+#     environment:
+#       MYSQL_ROOT_PASSWORD: root
+#     networks:
+#       - ken
+#   scrapinhub:
+#     image: sbdev/wd-wordpress:ws-1.2
+#     links:
+#       - php7
+#     volumes:
+#       - ~/workspace:/scrape
+#     command:
+#       tail -f /dev/null
+#     networks:
+#       - ken
+# volumes:
+#   data: {}
+
+networks:
+    ken:
+        driver:
+            bridge
