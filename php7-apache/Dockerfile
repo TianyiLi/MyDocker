@@ -1,6 +1,7 @@
 FROM php:7.0.8-apache
 COPY config/apache2/apache2.conf /etc/apache2/
 COPY config/apache2/ports.conf /etc/apache2/
+COPY config/apache2/sites-available/000-default.conf /etc/apache2/sites-available/
 COPY config/apache2/sites-enabled/000-default.conf /etc/apache2/sites-enabled/
 RUN apt-get update && apt-get install -y git zlib1g-dev
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
