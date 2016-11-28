@@ -10,7 +10,7 @@ services:
       - 9010:9010
     volumes:
       - ~/workspace:/var/www/html
-    # restart: always
+    restart: always
     networks:
       - ken
   db:
@@ -21,7 +21,7 @@ services:
       - data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
-    # restart: always
+    restart: always
     networks:
       - ken
   phpmyadmin:
@@ -31,7 +31,7 @@ services:
         - ken
       links:
         - db:pma_db
-      # restart: always
+      restart: always
       ports:
         - "9000:80"
 volumes:
