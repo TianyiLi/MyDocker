@@ -16,4 +16,18 @@ RUN docker-php-ext-install pdo_mysql
 RUN composer global require "laravel/installer"
 RUN echo 'export PATH="$PATH:$HOME/.composer/vendor/bin"' >> ~/.bashrc
 RUN a2enmod rewrite
+RUN apt-get install -y wget
+RUN wget -c "http://xdebug.org/files/xdebug-2.4.0.tgz" \
+	&& tar -xf xdebug-2.4.0.tgz \
+	&& rm xdebug-2.4.0.tgz \
+	&& ( \
+        cd xdebug-2.4.0 \
+        && phpize \
+        && ./configure --enable-xdebug \
+        && make \
+        && make install \
+    ) \
+  && rm -r xdebug-2.4.0 \
+  && docker-php-ext-enable xdebug
+COPY config/docker-php-ext-xdebug.ini /usr/local/etc/php/conf.d/
 EXPOSE 9010
