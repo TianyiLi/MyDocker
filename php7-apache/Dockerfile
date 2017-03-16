@@ -1,4 +1,4 @@
-FROM php:7.0.8-apache
+FROM php:7.1.0-apache
 COPY config/apache2/apache2.conf /etc/apache2/
 COPY config/apache2/ports.conf /etc/apache2/
 COPY config/apache2/sites-available/000-default.conf /etc/apache2/sites-available/
@@ -30,4 +30,5 @@ RUN wget -c "http://xdebug.org/files/xdebug-2.4.0.tgz" \
   && rm -r xdebug-2.4.0 \
   && docker-php-ext-enable xdebug
 COPY config/docker-php-ext-xdebug.ini /usr/local/etc/php/conf.d/
+RUN useradd -ms /bin/bash ken
 EXPOSE 9010
