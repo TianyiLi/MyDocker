@@ -10,6 +10,11 @@ services:
       - 9010:9010
     volumes:
       - ~/workspace:/var/www/html
+      - ./php7-apache/config/apache2/sites-available/000-default.conf:/etc/apache2/sites-available/000-default.conf
+      - ./php7-apache/config/apache2/sites-enabled/000-default.conf:/etc/apache2/sites-enabled/000-default.conf
+      - ./php7-apache/config/apache2/apache2.conf:/etc/apache2/apache2.conf
+      - ./php7-apache/config/php.ini:/usr/local/etc/php/php.ini
+      - ./php7-apache/config/docker-php-ext-xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
     restart: always
     networks:
       - ken
@@ -43,5 +48,5 @@ networks:
             bridge
         ipam:
           config:
-          - subnet: 172.20.0.0/24
-            gateway: 172.20.0.1
+          - subnet: 172.21.0.0/24
+            gateway: 172.21.0.1
