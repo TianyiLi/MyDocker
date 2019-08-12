@@ -6,8 +6,11 @@ services:
       - db
       - redis
     ports:
-      - 9090:80
+      # - 9090:80
       - 9091:8080
+      - 9092:8081
+      - 9093:8082
+      # - 9094:8083
 #      - 8080:80
 #      - 9999:443
 #      - 8080:8080
@@ -25,7 +28,7 @@ services:
   db:
     image: mysql:5.7 # or mariadb
     ports:
-      - 3300:3306
+      - 3306:3306
     volumes:
       - data:/var/lib/mysql
     environment:

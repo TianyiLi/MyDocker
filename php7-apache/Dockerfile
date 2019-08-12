@@ -30,4 +30,8 @@ RUN wget -c "http://xdebug.org/files/xdebug-2.7.0.tgz" \
   && docker-php-ext-enable xdebug
 
 RUN useradd -ms /bin/bash ken
+EXPOSE 80
 EXPOSE 8080
+EXPOSE 8081
+EXPOSE 8082
+EXPOSE 8083
